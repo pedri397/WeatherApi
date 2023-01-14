@@ -13,11 +13,9 @@
             <li class="ul__li">
                 <img class="li__img" src="img/Weather Extension Logo.png" alt="">
             </li>
-            <li class="ul__li">
-                <form action="" id="form__search">
+            <li class="ul__li">               
                     <input type="search" class="search" id="search__txt" placeholder="Buscar Ciudad">
-                    <button type="submit" class="btsearch" id="btsearch">Buscar</button>
-                </form>
+                    <button class="btsearch" id="btsearch">Buscar</button>
             </li>
         </ul>
     </header>
@@ -26,19 +24,27 @@
 
         <section class="section__actual">
             <div class="actual__caja">
-                <h1 class="actual__tit">Madrid</h1>
+                <h1 class="actual__tit" id="nombre"></h1>
                 <div class="actual__img">
-                    <img src="img/sol.png" class="actual__img--img" alt="">
-                    <p class="actual__temp">14ª</p>
+                    <img src="" class="actual__img--img" alt="" id="actual__img">
+                    <span class="actual__temp" id="grados__m"></span>
                 </div>
+                <span class="actual__txt" id="estado__cielo"></span>
+                    <span class="actual__txt">Min / Max</span>
+                <div class="actual__txt">
+                    <span id="grados__min__m"></span>
+                    <span>/</span>
+                    <span id="grados__max__m"></span>
+                </div>
+            </div>
+        </section>
+
+        <section class="section__actual">
+            <div class="actual__caja">
                 <span class="actual__txt">Sol</p>
                 <span class="actual__txt">12º / 20º</p>
                 <span class="actual__txt">12/12/1998</p>
             </div>
-        </section>
-
-        <section class="section__semanal">
-
         </section>
         
     </main>

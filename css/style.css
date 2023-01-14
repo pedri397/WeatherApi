@@ -25,9 +25,10 @@ body {
 }
 
 .container {
-    border: 1px solid red;
     margin: auto;
     margin-top: 25px;
+    display: flex;
+    justify-content: space-around;
 }
 
 .section__actual {
@@ -35,7 +36,6 @@ body {
 }
 
 .actual__caja {
-    border: 1px solid purple;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -46,16 +46,21 @@ body {
 .actual__img {
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 20px;
     margin-right: 20px;
-    margin-bottom: 55px;
+    margin-bottom: 35px;
 }
 .actual__temp {
-    font-size: 85px;
+    font-size: 65px;
+    width: 300px;
+    
 }
 
 .actual__img--img {
-    width: 40%;
+    margin-top: 75px;
+    width: 100%;
+    height: 100%;
 }
 
 .actual__tit {
@@ -65,4 +70,5 @@ body {
 .actual__txt {
     font-size: 28px;
     text-align: center;
+    margin-bottom: 20px;
 }

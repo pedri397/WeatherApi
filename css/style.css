@@ -3,6 +3,7 @@ body {
     background-image: url('../img/img-playa.jpg');
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
     height: 100vh;
 
 }
@@ -36,6 +37,16 @@ body {
 .section__actual {
     width: 30%;
 }
+
+.search {
+    background-color: rgba(255, 255, 255, 0.359);
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 0.50rem;
+}
+
+
 
 .section__datos {
     width: 40%;
@@ -121,4 +132,111 @@ body {
 .img__datos {
     width: 10%;
     margin-bottom: 10px;
+}
+
+.footer {
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.tiempo__semana {
+    text-decoration: none;
+    color: white;
+    padding: 20px;
+    background-color: rgba(97, 136, 166, 0.665);
+    border-radius: 0.55rem;
+    border: 2px solid white;
+    width: 300px;
+    -webkit-box-shadow: 0px 0px 30px 7px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 30px 7px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 30px 7px rgba(0,0,0,0.75);
+    font-size: 20px;
+}
+
+
+/*Responsive*/
+
+@media (max-width: 1351px) {
+    .actual__txt {
+        font-size: 25px;
+    }
+}
+
+@media (max-width: 1235px){
+    .actual__tit {
+        font-size: 30px;
+        transition: 2s;
+    }
+
+    .actual__img--img {
+        width: 60%;
+        margin-left: 90px;
+    }
+    .actual__temp {
+        font-size: 50px;
+    }
+
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .actual__txt-corregir {
+        margin-bottom: 20px;
+    }
+
+    .section__datos{
+        gap: 30px;
+    }
+    .tiempo__semana {
+        margin-top: 30px;
+    }
+
+    .actual__txt {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 980px){
+    .section__datos {
+        display: none;
+    }
+
+    .section__actual {
+        width: 60%;
+    }
+
+    .actual__tit {
+        font-size: 45px;
+    }
+
+    .actual__temp {
+        font-size: 80px;
+    }
+
+    .actual__img--img {
+        width: 100%;
+        margin-left: 20px;
+    }
+}
+
+@media (max-width: 740px) {
+    .actual__tit {
+        font-size: 38px;
+    }
+
+    .li__img {
+        display: none;
+    }
+    .ul__li {
+        padding: 10px;
+        transition: 2s;
+    }
+
+    .header__ul {
+        flex-direction: column;
+        
+    }
 }

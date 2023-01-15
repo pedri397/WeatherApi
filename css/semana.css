@@ -1,0 +1,51 @@
+.semanal {
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 95px;
+}
+
+.semanal__caja {
+    width: 20%;
+}
+
+.semana__tit {
+    font-size: 18px;
+}
+
+.semana__temp {
+    font-size: 54px;
+}
+
+@media (max-width: 1750px) {
+    .actual__caja {
+        width: 25%;
+        transition: 2s;
+    }
+}
+
+@media (max-width: 1330px) {
+    .actual__caja {
+        width: 30%;
+    }
+    .actual__img--img {
+        width: 50%;
+        margin-left: 45px;
+    }
+}
+
+@media (max-width: 1000px) {
+    .actual__caja {
+        width: 40%;
+    }
+}
+
+@media (max-width: 790px){
+    .actual__caja {
+        width: 60%;
+    }
+    .semanal {
+        flex-direction: column;
+        align-items: center;
+    }
+}

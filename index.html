@@ -5,17 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
-    <title>Document</title>
+    <title>El Tiempo</title>
+    <link rel="shortcut icon" href="../img/animated/day.svg" type="image/x-icon">
 </head>
 <body>
     <header class="header">
         <ul class="header__ul">
-            <li class="ul__li">
-                <img class="li__img" src="img/Weather Extension Logo.png" alt="">
-            </li>
+            <a href="../index.html">
+                <img class="li__img" src="../img/Weather Extension Logo.png" alt=""> 
+            </a>
             <li class="ul__li">               
                     <input type="search" class="search" id="search__txt" placeholder="Buscar Ciudad">
-                    <button class="btsearch" id="btsearch">Buscar</button>
+                    <button class="btsearch search" id="btsearch">Buscar</button>
             </li>
         </ul>
     </header>
@@ -33,7 +34,7 @@
                 <div class="actual__txt actual__txt--mt">
                     <span id="grados__min__m"></span>
                     <img src="img/termometroazul.png" alt="" srcset="" class="termometro">
-                    <span>/</span>
+                    <span>|</span>
                     <span id="grados__max__m"></span>
                     <img src="img/termometrorojo.png" alt="" srcset="" class="termometro">
                 </div>
@@ -42,14 +43,14 @@
 
         <section class="section__datos">
             <div class="datos__caja">
-                <span class="actual__txt">Sensacion</span>
+                <span class="actual__txt ">Sensacion</span>
                 <img src="img/sensacion.png" alt="" srcset="" class="img__datos">
-                <span class="actual__txt actual__txt--mb" id="sensacion"></span> 
+                <span class="actual__txt actual__txt--mb actual__txt-corregir" id="sensacion"></span> 
             </div>
             <div class="datos__caja">
                 <span class="actual__txt">Nubosidad</span>
                 <img src="img/nubosidad.webp" alt="" srcset="" class="img__datos">
-                <span class="actual__txt" id="nubosidad">3º</span> 
+                <span class="actual__txt" id="nubosidad"></span> 
             </div>
             <div class="datos__caja">
                 <span class="actual__txt">Humedad</span>
@@ -78,6 +79,11 @@
         </section>
         
     </main>
+
+    <footer class="footer">
+        <a href="pages/semana.html" class="tiempo__semana">Tiempo de la semana</a>
+    </footer>
+
     <script src="js/script.js"></script>
 </body>
 </html>

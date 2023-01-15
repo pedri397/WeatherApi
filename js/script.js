@@ -3,7 +3,7 @@ const api = {
     url: `https://api.openweathermap.org/data/2.5/weather`
 }
 
-
+/** Todos los id */
 let form__search = document.querySelector("#form__search")
 let btsearch = document.getElementById("btsearch")
 let search__txt = document.getElementById("search__txt")
@@ -20,6 +20,8 @@ let amanecer = document.getElementById("amanecer")
 let atardecer = document.getElementById("atardecer")
 let viento = document.getElementById("viento")
 
+/** Variables utilizadas */
+let arrayFechas
 let est__cielo 
 let latitud
 let longitud
@@ -34,7 +36,7 @@ console.log(hora)
 
 
 
-
+/** Si aceptas que la pagina utilice tu localizacion te genera automaticamente atraves de tu longitud y latitud el tiempo */
 if(navigator.geolocation){
     let success = function(position){
     latitud = position.coords.latitude
@@ -53,7 +55,7 @@ if(navigator.geolocation){
 
 
     
-
+/** Funcion para hacer las consulta con el nombre de una ciudad  */
 const buscarConsulta =()=> {
     console.log(search__txt.value)
 
@@ -62,7 +64,12 @@ const buscarConsulta =()=> {
     .then(data => mostrarDatos(data))
     .catch(error => console.log(error))
 }
-let arrayFechas
+
+
+
+
+
+/** Funcion para mostrar todos los datos  */
 
 const mostrarDatos =(data)=> {
     console.log(data) 
@@ -111,6 +118,7 @@ const mostrarDatos =(data)=> {
   
 }
 
+/** Funcion para cambiar la imagen segun el estado en el que estemos */
 
 const cambiarImagenTiem =(estado__cielo)=> {
 
@@ -122,11 +130,18 @@ const cambiarImagenTiem =(estado__cielo)=> {
         }else if(hora > 19){
             actual__img.src = '../img/animated/night.svg'
         }
-    }else if(estado__cielo === "muy nubloso"){
+    }else if(estado__cielo === "muy nuboso" || est__cielo === "nubes"){
         actual__img.src = '../img/animated/cloudy.svg'
+    }else if(estado__cielo === "lluvia moderada"){
+        actual__img.src = '../img/animated/rainy-5.svg'
+    }else if(estado__cielo === "nubes dispersas" || estado__cielo === "algo de nubes"){
+        actual__img.src = '../img/animated/cloudy-day-3.svg'
+    }else if(estado__cielo === "lluvia ligera"){
+        actual__img.src = '../img/animated/rainy-3.svg'
     }
 }
 
+/** Funcion para combiar las horas en formato unix */
 
 const convertirUnixHora =(unix)=> {
     let fecha = new Date(unix * 1000)
@@ -134,6 +149,8 @@ const convertirUnixHora =(unix)=> {
     let minuto = fecha.getMinutes() 
     return `${hora}:${minuto}`
 }
+
+/** Funcion para saber hacia que direcion va el viento segun grados Norte, Sur, Este y Oeste */
 
 const direccionViento =(gradosViento)=> {
     // console.log(gradosViento)

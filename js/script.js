@@ -13,6 +13,13 @@ let grados__max__m = document.getElementById("grados__max__m")
 let actual__img = document.getElementById("actual__img")
 let estado__cielo = document.getElementById("estado__cielo")
 let nombre = document.getElementById("nombre")
+let sensacion = document.getElementById("sensacion")
+let nubosidad = document.getElementById("nubosidad")
+let humedad = document.getElementById("humedad")
+let amanecer = document.getElementById("amanecer")
+let atardecer = document.getElementById("atardecer")
+let viento = document.getElementById("viento")
+
 let est__cielo 
 let latitud
 let longitud
@@ -20,6 +27,12 @@ let grados
 let grados__max
 let grados__min
 let percepcion__temp
+let actual__h = new Date()
+
+hora = actual__h.getHours()
+console.log(hora)
+
+
 
 
 if(navigator.geolocation){
@@ -30,36 +43,8 @@ if(navigator.geolocation){
         console.log(latitud)
         fetch(`${api.url}?lat=${latitud}&lon=${longitud}&appid=${api.key}&lang=es`)
         .then(response => response.json())
-        .then(data => ubicacionActual(data))
+        .then(data => mostrarDatos(data))
         .catch(error => console.log(error))
-
-        const ubicacionActual =(data)=> {
-            // console.log(data)
-            nombre.textContent = data.name
-
-            data.weather.forEach(e => {
-                // console.log(e.description)  
-                  est__cielo = e.description
-              })
-              estado__cielo.textContent = est__cielo.toString().toUpperCase()
-
-            grados = data.main.temp - 273,15 
-            grados = grados.toString().slice(0,2)
-            grados__m.textContent = grados + " cº"
-
-            grados__max = data.main.temp_max - 273,15
-            grados__max = grados__max.toString().slice(0,2)
-            grados__max__m.textContent = grados__max + " cº"
-
-            grados__min = data.main.temp_min - 273,15
-            grados__min = grados__min.toString().slice(0,2)
-            grados__min__m.textContent = grados__min + " cº"
-
-            actual__img.src = '../img/animated/cloudy.svg'
-
-        }
-
-        ubicacionActual()
     }
     navigator.geolocation.getCurrentPosition(success, function(msg){
     console.error( msg )
@@ -67,9 +52,7 @@ if(navigator.geolocation){
     }
 
 
-
-
-
+    
 
 const buscarConsulta =()=> {
     console.log(search__txt.value)
@@ -79,32 +62,48 @@ const buscarConsulta =()=> {
     .then(data => mostrarDatos(data))
     .catch(error => console.log(error))
 }
-
+let arrayFechas
 
 const mostrarDatos =(data)=> {
     console.log(data) 
-
+    nombre.textContent = data.name
+  
+    console.log(arrayFechas)
     data.weather.forEach(e => {
       console.log(e.description)  
         est__cielo = e.description
     })
     estado__cielo.textContent = est__cielo.toString().toUpperCase()
     
+    cambiarImagenTiem(est__cielo)
+
     console.log(data.main)
     grados = data.main.temp - 273,15 
     grados = grados.toString().slice(0,2)
-    grados__m.textContent = grados + " cº"
+    grados__m.textContent = grados + " º"
 
     grados__max = data.main.temp_max - 273,15
     grados__max = grados__max.toString().slice(0,2)
-    grados__max__m.textContent = grados__max + " cº"
+    grados__max__m.textContent = grados__max + " º"
 
     grados__min = data.main.temp_min - 273,15
     grados__min = grados__min.toString().slice(0,2)
-    grados__min__m.textContent = grados__min + " cº"
+    grados__min__m.textContent = grados__min + " º"
 
 
     percepcion__temp = data.main.feels_like - 273,15
+    percepcion__temp = percepcion__temp.toString().slice(0,2)
+    sensacion.textContent = percepcion__temp + " º"
+
+    nubosidad.textContent = data.clouds.all + " %"
+    humedad.textContent = data.main.humidity + " %"
+
+    amanecer.textContent = convertirUnixHora(data.sys.sunrise)
+    atardecer.textContent = convertirUnixHora(data.sys.sunset)
+
+    direccionViento(data.wind.deg)
+
+
  
     console.log(grados__max + "Cº")  
     console.log(grados__min + "Cº")  
@@ -113,6 +112,54 @@ const mostrarDatos =(data)=> {
 }
 
 
+const cambiarImagenTiem =(estado__cielo)=> {
+
+    if(estado__cielo === "nubes"){
+        actual__img.src = '../img/animated/cloudy.svg'
+    }else if(estado__cielo === "cielo claro"){
+        if(hora < 19 ){
+            actual__img.src = '../img/animated/day.svg'
+        }else if(hora > 19){
+            actual__img.src = '../img/animated/night.svg'
+        }
+    }else if(estado__cielo === "muy nubloso"){
+        actual__img.src = '../img/animated/cloudy.svg'
+    }
+}
+
+
+const convertirUnixHora =(unix)=> {
+    let fecha = new Date(unix * 1000)
+    let hora = fecha.getHours()
+    let minuto = fecha.getMinutes() 
+    return `${hora}:${minuto}`
+}
+
+const direccionViento =(gradosViento)=> {
+    // console.log(gradosViento)
+
+    if(gradosViento < 30){
+        viento.textContent = gradosViento + " N"
+    }else if(gradosViento > 30 && gradosViento < 90){
+        viento.textContent = gradosViento + " NE"
+    }else if(gradosViento > 90 && gradosViento < 120){
+        viento.textContent = gradosViento + " E"
+    }else if(gradosViento > 120 && gradosViento < 150){
+        viento.textContent = gradosViento + " SE"
+    }else if(gradosViento > 150 && gradosViento < 180){
+        viento.textContent = gradosViento + " SE"
+    }else if(gradosViento > 180 && gradosViento < 210){
+        viento.textContent = gradosViento + " S"
+    }else if(gradosViento > 210 && gradosViento < 250){
+        viento.textContent = gradosViento + " SO"
+    }else if(gradosViento > 250 && gradosViento < 290){
+        viento.textContent = gradosViento + " O"
+    }else if(gradosViento > 290 && gradosViento < 330){
+        viento.textContent = gradosViento + " NO"
+    }else if(gradosViento > 330 && gradosViento < 360){
+        viento.textContent = gradosViento + " N"
+    }
+}
 
 
 

@@ -3,6 +3,8 @@ body {
     background-image: url('../img/img-playa.jpg');
     background-repeat: no-repeat;
     background-size: cover;
+    height: 100vh;
+
 }
 
 .header__ul {
@@ -26,13 +28,22 @@ body {
 
 .container {
     margin: auto;
-    margin-top: 25px;
+    margin-top: 75px;
     display: flex;
     justify-content: space-around;
 }
 
 .section__actual {
+    width: 30%;
+}
+
+.section__datos {
     width: 40%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 90px;
+
 }
 
 .actual__caja {
@@ -40,9 +51,30 @@ body {
     flex-direction: column;
     align-items: center;
     border-radius: 0.55rem;
-    background-color: rgba(0, 0, 0, 0.82);
+    background-color: rgba(97, 136, 166, 0.665);
+    border: 2px solid white;
     color: white;
+    -webkit-box-shadow: 0px 0px 30px 7px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 30px 7px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 30px 7px rgba(0,0,0,0.75);
 }
+
+.datos__caja {
+    background-color: rgba(97, 136, 166, 0.665);
+    border-radius: 0.55rem;
+    display: flex;
+    border: 2px solid rgb(255, 255, 255);
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+    color: rgba(255, 255, 255, 0.937);
+    width: 20%;
+    height: 20%;
+    -webkit-box-shadow: 0px 0px 30px 7px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 30px 7px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 30px 7px rgba(0,0,0,0.75);
+}
+
 .actual__img {
     display: flex;
     justify-content: center;
@@ -51,14 +83,15 @@ body {
     margin-right: 20px;
     margin-bottom: 35px;
 }
+
 .actual__temp {
     font-size: 65px;
     width: 300px;
-    
+    margin-top: 55px;
 }
 
 .actual__img--img {
-    margin-top: 75px;
+    margin-top: 45px;
     width: 100%;
     height: 100%;
 }
@@ -71,4 +104,21 @@ body {
     font-size: 28px;
     text-align: center;
     margin-bottom: 20px;
+}
+
+.actual__txt--mb {
+    margin-bottom: 200px;
+}
+
+.actual__txt--mt {
+    margin-top: 15px;
+}
+
+.termometro {
+    width: 7%;
+}
+
+.img__datos {
+    width: 10%;
+    margin-bottom: 10px;
 }

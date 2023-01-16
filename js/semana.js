@@ -160,18 +160,18 @@ if(navigator.geolocation){
  * solo me añade mas tarjetas.
  */
 
-    // const buscarConsulta =()=> {
-    //     console.log(semanal.children)
+    const buscarConsulta =()=> {
+        console.log(semanal.children)
 
-    //     semanal.removeChild(fragment)
+        semanal.innerHTML = ""
     
-    //     fetch(`${api.url}?q=${search__txt.value}&appid=${api.key}&lang=es`)
-    //     .then(response => response.json())
-    //     .then(data => mostrarDatos(data))
-    //     .catch(error => console.log(error))
-    // }
+        fetch(`${api.url}?q=${search__txt.value}&appid=${api.key}&lang=es`)
+        .then(response => response.json())
+        .then(data => mostrarDatos(data))
+        .catch(error => console.log(error))
+    }
 
    
 
 
-    // btsearchsemana.addEventListener("click", buscarConsulta)
+    btsearchsemana.addEventListener("click", buscarConsulta)
